@@ -1,0 +1,10 @@
+**/__pycache__/
+**/.mypy_cache/
+app.log
+.venv
+.env
+.secrets
+cache.json
+mock.json
+mock.mp3
+.?test*

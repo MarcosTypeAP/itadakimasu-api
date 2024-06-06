@@ -1,0 +1,20 @@
+services:
+  app:
+    build: .
+    tty: true
+    stdin_open: true
+    ports:
+      - "4000:${PORT:-4000}"
+    env_file: ".env"
+    secrets:
+      - app_secrets
+    volumes:
+      - .:/app
+      - logs:/var/log/app
+
+secrets:
+  app_secrets:
+    file: .secrets
+
+volumes:
+  logs:

@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if [[ -n $LOCAL_DEV ]]; then
+    debug_args="--reload"
+fi
+
+if [[ -z $PORT ]]; then
+    PORT=4000
+fi
+
+ADDRESS=$(ip -f inet addr show dev eth0 | grep -o -E '\d+\.\d+\.\d+\.\d+' | head -n 1)
+
+python -m uvicorn --app-dir src main:app --host $ADDRESS --port $PORT $debug_args
